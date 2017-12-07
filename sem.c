@@ -12,7 +12,7 @@ int main(int argc, char** args) {
 }
 
 int createSem(int N){
-    int sem = semget(10, 1, IPC_EXCL | IPC_CREAT);
+    int sem = semget(5, 1, IPC_EXCL | IPC_CREAT | 0600);
     //printf("Hi %s\n",strerror(errno));
   if(sem == -1){
     printf("Sorry bro, semaphore already exists.\n");
@@ -24,7 +24,7 @@ int createSem(int N){
 }
 
 int getSem(){
-  int sem = semget(10, 1, IPC_CREAT);
+  int sem = semget(5, 1, 0600);
     semctl(sem, 0, GETVAL);
     if(sem == -1){
         printf("What chu doin' man! You gotta make sem semaphore first!\n");
@@ -35,7 +35,7 @@ int getSem(){
 }
 
 int delSem(){
-    int sem = semget(10, 1, IPC_CREAT);
+    int sem = semget(5, 1, 0600);
     semctl(sem, 0, IPC_RMID);
     if(sem == -1){
         printf("Nothin to del, boss!\n");
