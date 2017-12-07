@@ -13,3 +13,6 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 
+int createSem(int key, int N);
+int getSem(int key);
+int delSem(int key);
